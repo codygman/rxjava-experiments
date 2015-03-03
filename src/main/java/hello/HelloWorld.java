@@ -10,18 +10,14 @@ public class HelloWorld {
 
         Observable<String> myObservable = Observable.just("Hello, world!");
     
-        Subscriber<String> mySubscriber = new Subscriber<String>() {
+	Action1<String> onNextAction = new Action1<String>() {
 	    @Override
-	    public void onNext(String s) { System.out.println(s);}
+	    public void call(String s) {
+		System.out.println(s);
+	    }
+	};
     
-	    @Override
-	    public void onCompleted() {}
-    
-	    @Override
-	    public void onError(Throwable e) {}
-        };
-    
-        myObservable.subscribe(mySubscriber);
+        myObservable.subscribe(onNextAction);
 
     }
 }
